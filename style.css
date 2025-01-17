@@ -1,0 +1,313 @@
+/* ===== Basic Reset ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* ===== Body Styles ===== */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #3D52A0;
+    color: #EDE8F5;
+  }
+  
+  /* ===== Page Container (blur when mobile menu opens) ===== */
+  #page-container {
+    transition: filter 0.3s ease;
+    position: relative;
+    z-index: 1;
+  }
+  #page-container.blur {
+    filter: blur(5px);
+  }
+  
+  /* 
+    ===== Navigation Bar =====
+    1) Fixed at top (slides off screen on scroll down).
+    2) We'll toggle .nav-hide for hide-on-scroll.
+  */
+  .main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3D52A0;
+    padding: 10px 20px;
+    border-radius: 0 0 15px 15px;
+    transition: transform 0.3s ease-in-out;
+  }
+  .brand {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #EDE8F5;
+  }
+  .nav-right .nav-link {
+    text-decoration: none;
+    color: #EDE8F5;
+    margin-left: 15px;
+    padding: 5px 10px;
+    transition: background-color 0.3s, border-radius 0.3s;
+  }
+  .nav-right .nav-link:hover {
+    background-color: #7091E6;
+    border-radius: 10px;
+  }
+  /* Hide-on-scroll class: moves nav off-screen upwards */
+  .nav-hide {
+    transform: translateY(-150%);
+  }
+  
+  /* 
+    ===== Burger Menu (Mobile Trigger) =====
+    Fixed so it scrolls with the viewport (and can hide on scroll).
+  */
+  .burger-menu {
+    display: none; /* hidden on larger screens */
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    z-index: 1001;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+  .bar1, .bar2, .bar3 {
+    width: 30px;
+    height: 3px;
+    background-color: #EDE8F5;
+    margin: 5px 0;
+    transition: 0.4s;
+  }
+  /* Animate burger into "X" */
+  .change .bar1 {
+    transform: rotate(-45deg) translate(-7px, 6px);
+  }
+  .change .bar2 {
+    opacity: 0;
+  }
+  .change .bar3 {
+    transform: rotate(45deg) translate(-5px, -5px);
+  }
+  
+  /* 
+    ===== Mobile Nav Menu (slides out from the right) =====
+    Fixed so it appears in the same viewport position as the burger.
+  */
+  .nav-mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #7091E6;
+    height: 100vh;
+    width: 0;
+    overflow: hidden;
+    transition: width 0.5s ease-out;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    border-radius: 15px 0 0 15px;
+  }
+  .nav-mobile-menu .nav-link {
+    color: #EDE8F5;
+    text-decoration: none;
+    padding: 15px 20px;
+    width: 100%;
+    font-size: 1.2rem;
+    transition: background-color 0.3s;
+  }
+  .nav-mobile-menu .nav-link:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  .nav-mobile-menu.show {
+    width: 250px;
+  }
+  
+  /* 
+    ===== Hero Section (two-column layout) =====
+    1) .hero-section is the container
+    2) .hero-content uses Flexbox to split into left & right columns
+    3) .hero-image on the left, .hero-text on the right
+  */
+  .hero-section {
+    display: flex;
+    justify-content: center;   /* center the .hero-content horizontally */
+    align-items: center;
+    min-height: 80vh;
+    position: relative;
+    margin-top: 60px;          /* offset for fixed nav */
+    background-color: #3D52A0; /* optional background color behind content */
+  }
+  
+  .hero-content {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 20px;   /* some horizontal padding in the hero */
+    align-items: center;
+  }
+  
+  /* Left column: your picture */
+  .hero-image img {
+    max-width: 350px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  /* Right column: text & button, now centered within the column */
+  .hero-text {
+    /* Center both horizontally AND vertically in the column */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   /* vertical centering within the column */
+    align-items: center;       /* horizontal centering */
+    text-align: center;        /* center text lines */
+    color: #EDE8F5;
+  }
+  
+  /* Title & paragraph spacing */
+  .hero-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  .hero-text p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+  
+  /* "View My Work" button */
+  .btn {
+    text-decoration: none;
+    background-color: #EDE8F5;
+    color: #3D52A0;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+  .btn:hover {
+    background-color: #7091E6;
+    color: #FFFFFF;
+  }
+  
+  /* ===== Content Sections ===== */
+  .content-section {
+    padding: 60px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .content-section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .job-entry, .project-item, .education-entry {
+    text-align: left;
+    margin-bottom: 30px;
+  }
+  .job-entry h3, .project-item h3, .education-entry h3 {
+    font-size: 1.2rem;
+    color: #FFFFFF;
+    margin-bottom: 5px;
+  }
+  .job-dates {
+    float: right;
+    font-weight: normal;
+    color: #EDE8F5;
+  }
+  .job-entry p, .project-item p, .education-entry p {
+    font-size: 1rem;
+    margin-bottom: 5px;
+  }
+  ul {
+    margin-left: 20px;
+    text-align: left;
+    list-style-type: disc;
+  }
+  li {
+    margin-bottom: 5px;
+  }
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+  .skill-item {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    width: 250px;
+  }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+  }
+  
+  /* ===== Inline SVG Icons (if used) ===== */
+  .icon-link {
+    display: inline-block;
+    margin: 0 10px;
+  }
+  .icon-inline {
+    width: 35px;
+    height: 35px;
+    color: white; /* sets 'currentColor' to white for inline SVG */
+    transition: color 0.3s;
+  }
+  .icon-inline:hover {
+    color: #e3e3e3; /* lighten on hover */
+  }
+  
+  /* ===== Footer ===== */
+  .footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #3D52A0;
+    border-radius: 15px 15px 0 0;
+    margin-top: 40px;
+  }
+  
+  /* ===== Responsive Breakpoints ===== */
+  @media (max-width: 768px) {
+    /* Hide desktop nav, show burger */
+    .nav-right {
+      display: none;
+    }
+    .burger-menu {
+      display: block;
+    }
+  
+    /* Stack hero image and text on small screens */
+    .hero-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 20px;
+    }
+    .hero-image img {
+      max-width: 100%;
+    }
+  }
+  
+  @media (min-width: 769px) {
+    /* Show desktop nav, hide burger */
+    .nav-right {
+      display: flex;
+      align-items: center;
+    }
+    .burger-menu {
+      display: none;
+    }
+  }
+  
