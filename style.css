@@ -113,6 +113,8 @@
     justify-content: center;
     align-items: flex-start;
     border-radius: 15px 0 0 15px;
+    padding: 40px 0; /* Add padding to ensure buttons don't touch top/bottom */
+    gap: 20px; /* Add space between buttons */
   }
   
   .nav-mobile-menu .nav-link {
