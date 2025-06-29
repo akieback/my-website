@@ -5,11 +5,18 @@
     box-sizing: border-box;
   }
   
+  html, body {
+    height: 100%;
+    scroll-behavior: smooth;
+  }
+  
   /* ===== Body Styles ===== */
   body {
     font-family: 'Inter', Arial, sans-serif;
     background-color: #2C4A3F; /* Natural green */
     color: #F5F5F5; /* Light neutral text */
+    display: flex;
+    flex-direction: column;
   }
   
   /* ===== Page Container (blur when mobile menu opens) ===== */
@@ -262,7 +269,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between; /* Distribute space between content and footer */
   align-items: center;
   padding: 1.5rem 1rem; /* Reduced padding */
   overflow-y: auto; /* Allow scrolling if needed */
@@ -276,6 +283,7 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem; /* Reduced from 2rem to tighten up vertical spacing */
+  min-height: 100%;
 }
 
 .profile-wrapper {
@@ -287,17 +295,13 @@
 }
 
 .profile-image {
-  width: 10vw; /* Percentage of viewport width */
-  height: 10vw; /* Keep aspect ratio square */
-  min-width: 100px; /* Minimum size */
-  min-height: 100px; /* Minimum size */
-  max-width: 150px; /* Maximum size */
-  max-height: 150px; /* Maximum size */
+  width: 130px; /* Reduced from 150px */
+  height: 130px; /* Reduced from 150px */
   overflow: hidden;
   border-radius: 50%;
-  margin-bottom: 2vh; /* Viewport height based */
-  border: 0.2vw solid #F5F5F5; /* Relative border width */
-  box-shadow: 0 0.5vw 1vw rgba(0, 0, 0, 0.2);
+  margin-bottom: 1rem; /* Reduced from 1.5rem */
+  border: 3px solid #F5F5F5;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -318,67 +322,66 @@
 }
 
 .profile-name {
-  font-size: calc(1.8rem + 1.5vw); /* Fluid typography */
-  margin-bottom: 1vh;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
   color: #F5F5F5;
-  text-shadow: 0 0.1vw 0.3vw rgba(0, 0, 0, 0.2);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .profile-title {
-  font-size: calc(0.9rem + 0.5vw); /* Fluid typography */
-  margin-bottom: 1.5vh;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
   color: #A8DADC;
   font-weight: 300;
 }
 
 .profile-tagline {
-  font-size: calc(0.8rem + 0.4vw); /* Fluid typography */
-  margin-bottom: 2vh;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem; /* Reduced from 1.5rem */
   color: #A8DADC;
   font-weight: 300;
-  max-width: 80%; /* Percentage-based width */
+  max-width: 600px;
   text-align: center;
-  line-height: 1.4;
+  line-height: 1.4; /* Slightly tighter line height */
   opacity: 0.85;
 }
 
 .choice-prompt {
-  margin: 1vh 0;
+  margin: 0.5rem 0; /* Reduced from 1.5rem */
   text-align: center;
-  width: 100%;
 }
 
 .choice-prompt p {
-  font-size: calc(1rem + 0.5vw); /* Fluid typography */
+  font-size: 1.3rem; /* Slightly smaller */
   color: #F5F5F5;
-  margin-bottom: 1vh;
+  margin-bottom: 0.5rem; /* Reduced from 1rem */
   font-weight: 300;
 }
 
 .choice-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(280px, 80%), 1fr)); /* Responsive columns */
-  gap: 3%;
-  width: 90%;
-  max-width: 90%;
-  margin: 2vh auto 0;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Smaller minimum width */
+  gap: 1.5rem; /* Reduced from 2rem */
+  width: 100%;
+  max-width: 960px; /* Slightly reduced */
+  margin: 0.5rem auto 0; /* Added top margin */
 }
 
 /* Enhanced card styles */
 .choice-card {
   background-color: rgba(255, 255, 255, 0.08);
-  border-radius: 2vmin; /* Viewport-relative unit */
-  padding: 5%;
+  border-radius: 16px;
+  padding: 1.5rem; /* Reduced padding */
   display: flex;
   flex-direction: column;
   height: 100%;
-  min-height: 30vh; /* Viewport-based height */
+  min-height: 250px; /* Reduced from 300px */
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   overflow: hidden;
   text-decoration: none;
   color: #F5F5F5;
-  box-shadow: 0 0.5vmin 2vmin rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .choice-card::before {
@@ -395,8 +398,8 @@
 }
 
 .choice-card:hover {
-  transform: translateY(-2%) scale(1.02);
-  box-shadow: 0 2vmin 4vmin rgba(0, 0, 0, 0.25);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
   animation: cardPulse 2s infinite ease-in-out;
 }
 
@@ -406,7 +409,7 @@
 
 .choice-card:active {
   transform: translateY(0) scale(0.98);
-  box-shadow: 0 1vmin 2vmin rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .professional-card {
@@ -451,19 +454,17 @@
 .card-icon {
   display: flex;
   justify-content: center;
-  margin-bottom: 7%;
+  margin-bottom: 1.5rem;
   transition: transform 0.3s ease;
 }
 
 .choice-card:hover .card-icon {
-  transform: translateY(-5%);
+  transform: translateY(-5px);
 }
 
 .choice-icon {
-  width: 15%;
-  height: auto;
-  min-width: 40px;
-  max-width: 60px;
+  width: 60px;
+  height: 60px;
   fill: #F5F5F5;
   transition: transform 0.3s ease;
 }
@@ -507,9 +508,10 @@
 
 .landing-footer {
   width: 100%;
-  padding: 1rem; /* Reduced from 2rem */
-  margin-top: 1rem; /* Reduced from 2rem */
+  padding: 1rem;
+  margin-top: auto; /* Push to the bottom */
   text-align: center;
+  margin-bottom: 0.5rem; /* Ensure some space at the very bottom */
 }
 
 .quick-contact {
@@ -520,7 +522,7 @@
   display: flex;
   justify-content: center;
   gap: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem; /* Reduced for better spacing */
 }
 
 .contact-link {
@@ -893,4 +895,43 @@
 
 @keyframes spin {
   to { transform: rotate(360deg); }
+}
+
+/* Additional footer positioning for different screen sizes */
+@media (max-height: 700px) {
+  .landing-footer {
+    margin-top: 1rem; /* Less margin on smaller screens */
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  .contact-links {
+    margin-bottom: 0.5rem;
+  }
+  
+  .copyright {
+    font-size: 0.8rem;
+  }
+}
+
+/* Ensure footer is visible on very small screens */
+@media (max-height: 600px) {
+  .landing-container {
+    padding-top: 0.75rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  .landing-footer {
+    position: relative;
+    margin-top: 0.5rem;
+    padding: 0.25rem;
+  }
+}
+
+/* Make sure the footer stays at the bottom on all browsers */
+@supports (-webkit-touch-callout: none) {
+  /* iOS specific fix */
+  .landing-container {
+    height: -webkit-fill-available;
+  }
 }

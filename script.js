@@ -7,16 +7,10 @@ function toggleMenu() {
     
     // Check if elements exist before trying to access them
     if (pageContainer && mobileMenu && burgerIcon) {
-  
+        // Blur/unblur page content
         pageContainer.classList.toggle("blur");
-  
-  
-    // Blur/unblur page content
-    pageContainer.classList.toggle("blur");
-    // Slide menu open/close
-    mobileMenu.classList.toggle("show");
-    // Animate burger to an "X"
-    burgerIcon.classList.toggle("change");
+        // Slide menu open/close
+        mobileMenu.classList.toggle("show");
         // Animate burger to an "X"
         burgerIcon.classList.toggle("change");
     }
@@ -267,135 +261,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Smarter preloader that only shows when needed
-(function() {
+// Handle preloader
+document.addEventListener('DOMContentLoaded', function() {
     const preloader = document.querySelector('.preloader');
-    if (!preloader) return;
     
-    // Hide preloader immediately if page loaded quickly
-    let preloaderTimeout;
-    let startTime = performance.now();
-    
-    // Function to hide the preloader
-    const hidePreloader = () => {
-        clearTimeout(preloaderTimeout);
-        preloader.classList.add('hidden');
-        // Remove from DOM after transition completes
+    if (preloader) {
+        // Show preloader for at least 2 seconds for IKEA effect
         setTimeout(() => {
-            preloader.remove();
-        }, 500);
-    };
-    
-    // If DOM loaded quickly (less than 300ms), hide preloader immediately
-    document.addEventListener('DOMContentLoaded', function() {
-        const loadTime = performance.now() - startTime;
-        
-        if (loadTime < 300) {
-            // Page loaded quickly, hide preloader immediately
-            hidePreloader();
-        } else {
-            // Page took some time to load, show preloader for a short moment
-            preloaderTimeout = setTimeout(hidePreloader, 800);
-        }
-    });
-    
-    // Hide preloader when page is fully loaded (all resources)
-    window.addEventListener('load', hidePreloader);
-    
-    // Fallback - hide preloader after 3 seconds max, even if page is still loading
-    preloaderTimeout = setTimeout(hidePreloader, 3000);
-})();
-
-// Check connection speed and only show preloader for slow connections
-(function() {
-    // If the Network Information API is available, use it to check connection speed
-    if ('connection' in navigator) {
-        const connection = navigator.connection;
-        const preloader = document.querySelector('.preloader');
-        
-        // Hide preloader immediately if connection is fast
-        if (preloader && (connection.effectiveType === '4g' || connection.downlink > 1.5)) {
             preloader.classList.add('hidden');
+            // Remove from DOM after transition completes
             setTimeout(() => {
                 preloader.remove();
             }, 500);
-        }
-        
-        // Add a listener for connection changes
-        connection.addEventListener('change', function() {
-            console.log('Connection type changed to ' + connection.effectiveType);
-        });
+        }, 2000);
     }
-})();
-
-// Intelligent loading indicators
-document.addEventListener('DOMContentLoaded', function() {
-    const preloader = document.querySelector('.preloader');
-    const minimalLoader = document.querySelector('.minimal-loader');
-    let connectionIsFast = true;
-    
-    // Check connection speed if API is available
-    if ('connection' in navigator) {
-        const connection = navigator.connection;
-        connectionIsFast = (connection.effectiveType === '4g' || connection.downlink > 1.5);
-    }
-    
-    // Handle loading indicators based on connection speed and page load time
-    const startTime = performance.now();
-    const pageLoadTime = performance.now() - startTime;
-    
-    if (connectionIsFast && pageLoadTime < 300) {
-        // Fast connection and fast load: hide preloader, briefly show minimal loader
-        if (preloader) {
-            preloader.classList.add('hidden');
-            setTimeout(() => preloader.remove(), 300);
-        }
-        
-        if (minimalLoader) {
-            minimalLoader.classList.add('visible');
-            setTimeout(() => {
-                minimalLoader.classList.remove('visible');
-            }, 800);
-        }
-    } else if (connectionIsFast) {
-        // Fast connection but slower load: hide preloader, show minimal loader until load completes
-        if (preloader) {
-            preloader.classList.add('hidden');
-            setTimeout(() => preloader.remove(), 300);
-        }
-        
-        if (minimalLoader) {
-            minimalLoader.classList.add('visible');
-        }
-    } else {
-        // Slow connection: keep preloader, hide after load or timeout
-        if (minimalLoader) {
-            minimalLoader.remove(); // Don't need minimal loader
-        }
-    }
-    
-    // Always hide all loaders when everything is fully loaded
-    window.addEventListener('load', function() {
-        if (preloader && !preloader.classList.contains('hidden')) {
-            preloader.classList.add('hidden');
-            setTimeout(() => preloader.remove(), 300);
-        }
-        
-        if (minimalLoader) {
-            minimalLoader.classList.remove('visible');
-        }
-    });
-    
-    // Fallback: hide all loaders after 3 seconds max
-    setTimeout(() => {
-        if (preloader && !preloader.classList.contains('hidden')) {
-            preloader.classList.add('hidden');
-        }
-        
-        if (minimalLoader) {
-            minimalLoader.classList.remove('visible');
-        }
-    }, 3000);
 });
 
 // Handle breadcrumb visibility
