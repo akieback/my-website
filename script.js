@@ -304,3 +304,61 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Landing page enhancements
+document.addEventListener('DOMContentLoaded', () => {
+    // Add fade-in effect for the page
+    setTimeout(() => {
+        document.body.classList.add('page-loaded');
+    }, 100);
+
+    // Add choice cards hover metrics to measure engagement
+    const professionalCard = document.querySelector('.professional-card');
+    const personalCard = document.querySelector('.personal-card');
+    const choiceCards = document.querySelectorAll('.choice-card');
+    
+    if (choiceCards.length > 0) {
+        choiceCards.forEach(card => {
+            // Track hover time
+            let hoverStartTime = 0;
+            
+            card.addEventListener('mouseenter', () => {
+                hoverStartTime = Date.now();
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                const hoverTime = Date.now() - hoverStartTime;
+                // We could log this to analytics in a real implementation
+                console.log(`Card hovered for ${hoverTime}ms`);
+            });
+            
+            // Add click animation
+            card.addEventListener('click', (e) => {
+                // Don't need to prevent default as the link handles navigation
+                card.classList.add('card-clicked');
+            });
+        });
+    }
+    
+    // Optional: add a small delay before navigation to show the click animation
+    const choiceLinks = document.querySelectorAll('.choice-btn');
+    if (choiceLinks.length > 0) {
+        choiceLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const href = link.getAttribute('href');
+                
+                // Show a minimal loading indicator
+                const loader = document.createElement('div');
+                loader.className = 'minimal-loader visible';
+                loader.innerHTML = '<div class="mini-spinner"></div><span>Loading...</span>';
+                document.body.appendChild(loader);
+                
+                // Navigate after a short delay
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 600);
+            });
+        });
+    }
+});
