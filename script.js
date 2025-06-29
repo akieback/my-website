@@ -4,6 +4,12 @@ function toggleMenu() {
     const pageContainer = document.getElementById("page-container");
     const mobileMenu = document.getElementById("mobileMenu");
     const burgerIcon = document.querySelector(".burger-menu");
+    
+    // Check if elements exist before trying to access them
+    if (pageContainer && mobileMenu && burgerIcon) {
+  
+        pageContainer.classList.toggle("blur");
+  
   
     // Blur/unblur page content
     pageContainer.classList.toggle("blur");
@@ -11,40 +17,57 @@ function toggleMenu() {
     mobileMenu.classList.toggle("show");
     // Animate burger to an "X"
     burgerIcon.classList.toggle("change");
+        // Animate burger to an "X"
+        burgerIcon.classList.toggle("change");
+    }
 }
 
 // Close menu when clicking a nav link
-document.querySelectorAll('.nav-mobile-menu .nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        const pageContainer = document.getElementById("page-container");
-        const mobileMenu = document.getElementById("mobileMenu");
-        const burgerIcon = document.querySelector(".burger-menu");
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileNavLinks = document.querySelectorAll('.nav-mobile-menu .nav-link');
+    if (mobileNavLinks.length > 0) {
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const pageContainer = document.getElementById("page-container");
+                const mobileMenu = document.getElementById("mobileMenu");
+                const burgerIcon = document.querySelector(".burger-menu");
 
-        pageContainer.classList.remove("blur");
-        mobileMenu.classList.remove("show");
-        burgerIcon.classList.remove("change");
-    });
-});
+                if (pageContainer && mobileMenu && burgerIcon) {
+                    pageContainer.classList.remove("blur");
+                    mobileMenu.classList.remove("show");
+                    burgerIcon.classList.remove("change");
+                }
+            });
+        });
+    }
 
-// Keep navbar visible when clicking nav links
-document.querySelectorAll('.nav-right .nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        const mainNav = document.querySelector(".main-nav");
-        const burger = document.querySelector(".burger-menu");
-        
-        // Show navbar and burger
-        mainNav.classList.remove("nav-hide");
-        burger.classList.remove("nav-hide");
-        
-        // Prevent navbar from hiding immediately after click
-        canHideNavbar = false;
-        
-        // Allow navbar to hide again after 500ms
-        setTimeout(() => {
-            canHideNavbar = true;
-            lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        }, 500);
-    });
+    // Keep navbar visible when clicking nav links
+    const navRightLinks = document.querySelectorAll('.nav-right .nav-link');
+    if (navRightLinks.length > 0) {
+        navRightLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const mainNav = document.querySelector(".main-nav");
+                const burger = document.querySelector(".burger-menu");
+                
+                if (mainNav && burger) {
+                    // Show navbar and burger
+                    mainNav.classList.remove("nav-hide");
+                    burger.classList.remove("nav-hide");
+                    
+                    // Prevent navbar from hiding immediately after click
+                    canHideNavbar = false;
+                    
+                    // Allow navbar to hide again after 500ms
+                    setTimeout(() => {
+                        canHideNavbar = true;
+                        if (typeof lastScrollTop !== 'undefined') {
+                            lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                        }
+                    }, 500);
+                }
+            });
+        });
+    }
 });
 
 // Close mobile menu if window is resized above 768px
@@ -54,9 +77,12 @@ window.addEventListener("resize", () => {
         const mobileMenu = document.getElementById("mobileMenu");
         const burgerIcon = document.querySelector(".burger-menu");
 
-        pageContainer.classList.remove("blur");
-        mobileMenu.classList.remove("show");
-        burgerIcon.classList.remove("change");
+        // Check if elements exist before trying to access them
+        if (pageContainer && mobileMenu && burgerIcon) {
+            pageContainer.classList.remove("blur");
+            mobileMenu.classList.remove("show");
+            burgerIcon.classList.remove("change");
+        }
     }
 });
 
@@ -70,6 +96,10 @@ window.addEventListener("scroll", () => {
 
     const mainNav = document.querySelector(".main-nav");
     const burger = document.querySelector(".burger-menu");
+    
+    // Skip this functionality if elements don't exist (like on the landing page)
+    if (!mainNav || !burger) return;
+    
     const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
     const scrollDifference = Math.abs(currentScroll - lastScrollTop);
 
@@ -92,4 +122,306 @@ window.addEventListener("scroll", () => {
         lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
     }
 });
-  
+
+// Make entire choice cards clickable with enhanced transitions
+document.addEventListener('DOMContentLoaded', function() {
+    // Add transition effect to card clicks
+    function navigateWithTransition(url) {
+        // Create overlay for transition effect
+        const overlay = document.createElement('div');
+        overlay.style.position = 'fixed';
+        overlay.style.top = '0';
+        overlay.style.left = '0';
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.backgroundColor = '#2C4A3F';
+        overlay.style.zIndex = '9999';
+        overlay.style.opacity = '0';
+        overlay.style.transition = 'opacity 0.4s ease';
+        document.body.appendChild(overlay);
+        
+        // Fade in then navigate
+        setTimeout(() => {
+            overlay.style.opacity = '1';
+            setTimeout(() => {
+                window.location.href = url;
+            }, 400);
+        }, 10);
+        
+        return false; // Prevent default link behavior
+    }
+    
+    // Handle Professional card
+    const professionalCard = document.querySelector('.professional-card');
+    if (professionalCard) {
+        professionalCard.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default link behavior
+            navigateWithTransition('Professional.html');
+        });
+    }
+    
+    // Handle Personal card
+    const personalCard = document.querySelector('.personal-card');
+    if (personalCard) {
+        personalCard.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default link behavior
+            navigateWithTransition('Personal.html');
+        });
+    }
+    
+    // Add subtle animation to card patterns
+    const cardPatterns = document.querySelectorAll('.card-pattern');
+    if (cardPatterns.length > 0) {
+        cardPatterns.forEach(pattern => {
+            // Create subtle movement on mousemove
+            document.addEventListener('mousemove', function(e) {
+                const card = pattern.closest('.choice-card');
+                if (!card) return;
+                
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left; // x position within the card
+                const y = e.clientY - rect.top;  // y position within the card
+                
+                // Calculate movement based on mouse position (subtle effect)
+                const moveX = (x / rect.width - 0.5) * 10;
+                const moveY = (y / rect.height - 0.5) * 10;
+                
+                // Apply the movement if mouse is over this card
+                if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
+                    pattern.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.1)`;
+                } else {
+                    pattern.style.transform = 'translate(0, 0) scale(1)';
+                }
+            });
+        });
+    }
+    
+    // Add fade-in animation for landing page elements
+    const landingElements = document.querySelectorAll('.profile-wrapper, .choice-prompt, .choice-card, .landing-footer');
+    if (landingElements.length > 0) {
+        landingElements.forEach((element, index) => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            
+            // Stagger the animations
+            setTimeout(() => {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }, 100 + (index * 150));
+        });
+    }
+});
+
+// Page transition for when the page loads
+document.addEventListener('DOMContentLoaded', function() {
+    // Add initial page load transition
+    document.body.style.opacity = '0';
+    document.body.style.transition = 'opacity 0.6s ease';
+    
+    setTimeout(() => {
+        document.body.style.opacity = '1';
+    }, 100);
+    
+    // Handle back button transitions
+    window.addEventListener('pageshow', function(event) {
+        if (event.persisted) {
+            // Page was loaded from cache (back button)
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        }
+    });
+    
+    // Add analytics event tracking (mock implementation)
+    function trackCardSelection(cardType) {
+        if (window.dataLayer) {
+            window.dataLayer.push({
+                'event': 'selectLandingChoice',
+                'cardChoice': cardType
+            });
+        }
+        // For demonstration/future implementation
+        console.log('Card selected:', cardType);
+    }
+    
+    // Update professional card click handler to include analytics
+    const professionalCard = document.querySelector('.professional-card');
+    if (professionalCard) {
+        professionalCard.addEventListener('click', function(e) {
+            e.preventDefault();
+            trackCardSelection('professional');
+            navigateWithTransition('Professional.html');
+        });
+    }
+    
+    // Update personal card click handler to include analytics
+    const personalCard = document.querySelector('.personal-card');
+    if (personalCard) {
+        personalCard.addEventListener('click', function(e) {
+            e.preventDefault();
+            trackCardSelection('personal');
+            navigateWithTransition('Personal.html');
+        });
+    }
+});
+
+// Smarter preloader that only shows when needed
+(function() {
+    const preloader = document.querySelector('.preloader');
+    if (!preloader) return;
+    
+    // Hide preloader immediately if page loaded quickly
+    let preloaderTimeout;
+    let startTime = performance.now();
+    
+    // Function to hide the preloader
+    const hidePreloader = () => {
+        clearTimeout(preloaderTimeout);
+        preloader.classList.add('hidden');
+        // Remove from DOM after transition completes
+        setTimeout(() => {
+            preloader.remove();
+        }, 500);
+    };
+    
+    // If DOM loaded quickly (less than 300ms), hide preloader immediately
+    document.addEventListener('DOMContentLoaded', function() {
+        const loadTime = performance.now() - startTime;
+        
+        if (loadTime < 300) {
+            // Page loaded quickly, hide preloader immediately
+            hidePreloader();
+        } else {
+            // Page took some time to load, show preloader for a short moment
+            preloaderTimeout = setTimeout(hidePreloader, 800);
+        }
+    });
+    
+    // Hide preloader when page is fully loaded (all resources)
+    window.addEventListener('load', hidePreloader);
+    
+    // Fallback - hide preloader after 3 seconds max, even if page is still loading
+    preloaderTimeout = setTimeout(hidePreloader, 3000);
+})();
+
+// Check connection speed and only show preloader for slow connections
+(function() {
+    // If the Network Information API is available, use it to check connection speed
+    if ('connection' in navigator) {
+        const connection = navigator.connection;
+        const preloader = document.querySelector('.preloader');
+        
+        // Hide preloader immediately if connection is fast
+        if (preloader && (connection.effectiveType === '4g' || connection.downlink > 1.5)) {
+            preloader.classList.add('hidden');
+            setTimeout(() => {
+                preloader.remove();
+            }, 500);
+        }
+        
+        // Add a listener for connection changes
+        connection.addEventListener('change', function() {
+            console.log('Connection type changed to ' + connection.effectiveType);
+        });
+    }
+})();
+
+// Intelligent loading indicators
+document.addEventListener('DOMContentLoaded', function() {
+    const preloader = document.querySelector('.preloader');
+    const minimalLoader = document.querySelector('.minimal-loader');
+    let connectionIsFast = true;
+    
+    // Check connection speed if API is available
+    if ('connection' in navigator) {
+        const connection = navigator.connection;
+        connectionIsFast = (connection.effectiveType === '4g' || connection.downlink > 1.5);
+    }
+    
+    // Handle loading indicators based on connection speed and page load time
+    const startTime = performance.now();
+    const pageLoadTime = performance.now() - startTime;
+    
+    if (connectionIsFast && pageLoadTime < 300) {
+        // Fast connection and fast load: hide preloader, briefly show minimal loader
+        if (preloader) {
+            preloader.classList.add('hidden');
+            setTimeout(() => preloader.remove(), 300);
+        }
+        
+        if (minimalLoader) {
+            minimalLoader.classList.add('visible');
+            setTimeout(() => {
+                minimalLoader.classList.remove('visible');
+            }, 800);
+        }
+    } else if (connectionIsFast) {
+        // Fast connection but slower load: hide preloader, show minimal loader until load completes
+        if (preloader) {
+            preloader.classList.add('hidden');
+            setTimeout(() => preloader.remove(), 300);
+        }
+        
+        if (minimalLoader) {
+            minimalLoader.classList.add('visible');
+        }
+    } else {
+        // Slow connection: keep preloader, hide after load or timeout
+        if (minimalLoader) {
+            minimalLoader.remove(); // Don't need minimal loader
+        }
+    }
+    
+    // Always hide all loaders when everything is fully loaded
+    window.addEventListener('load', function() {
+        if (preloader && !preloader.classList.contains('hidden')) {
+            preloader.classList.add('hidden');
+            setTimeout(() => preloader.remove(), 300);
+        }
+        
+        if (minimalLoader) {
+            minimalLoader.classList.remove('visible');
+        }
+    });
+    
+    // Fallback: hide all loaders after 3 seconds max
+    setTimeout(() => {
+        if (preloader && !preloader.classList.contains('hidden')) {
+            preloader.classList.add('hidden');
+        }
+        
+        if (minimalLoader) {
+            minimalLoader.classList.remove('visible');
+        }
+    }, 3000);
+});
+
+// Handle breadcrumb visibility
+document.addEventListener('DOMContentLoaded', function() {
+    const breadcrumb = document.querySelector('.breadcrumb-nav');
+    
+    if (breadcrumb) {
+        // Show breadcrumb after 3 seconds
+        setTimeout(() => {
+            breadcrumb.classList.add('visible');
+        }, 3000);
+        
+        // Hide breadcrumb when scrolling down, show when scrolling up
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 300) {
+                // Scrolling down & past threshold
+                breadcrumb.classList.remove('visible');
+            } else {
+                // Scrolling up or near top
+                breadcrumb.classList.add('visible');
+            }
+            
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
+    }
+});
