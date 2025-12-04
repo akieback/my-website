@@ -1,6 +1,6 @@
-// Set the countdown date (3 months from current date)
+// Set the countdown date (20 days from current date)
 const countdownDate = new Date();
-countdownDate.setMonth(countdownDate.getMonth() + 3);
+countdownDate.setDate(countdownDate.getDate() + 20);
 
 // Update the countdown every second
 const countdown = setInterval(function() {

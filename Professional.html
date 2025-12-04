@@ -21,7 +21,11 @@
     <a href="#home" class="nav-link">Home</a>
     <a href="#about" class="nav-link">About</a>
     <a href="#skills" class="nav-link">Skills</a>
-    <a href="#work-experience" class="nav-link">Work Experience</a>
+        <a href="#work-experience" class="nav-link">
+          <span class="label-full">Work Experience</span>
+          <span class="label-short">Work</span>
+        </a>
+    <a href="#publications" class="nav-link">Publications</a>
     <a href="#projects" class="nav-link">Projects</a>
     <a href="#education" class="nav-link">Education</a>
     <a href="#contact" class="nav-link">Contact</a>
@@ -47,13 +51,17 @@
       </div>
       <div class="nav-right">
         <a href="#home" class="nav-link">Home</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#skills" class="nav-link">Skills</a>
-        <a href="#work-experience" class="nav-link">Work Experience</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#education" class="nav-link">Education</a>
-        <a href="#contact" class="nav-link">Contact</a>
-      </div>
+    <a href="#about" class="nav-link">About</a>
+    <a href="#skills" class="nav-link">Skills</a>
+    <a href="#work-experience" class="nav-link">
+      <span class="label-full">Work Experience</span>
+      <span class="label-short">Work</span>
+    </a>
+    <a href="#publications" class="nav-link">Publications</a>
+    <a href="#projects" class="nav-link">Projects</a>
+    <a href="#education" class="nav-link">Education</a>
+    <a href="#contact" class="nav-link">Contact</a>
+  </div>
     </nav>
 
     <!-- ===== Hero Section (uses your photo as background) ===== -->
@@ -61,7 +69,7 @@
         <div class="hero-content">
           <!-- Left column: your picture -->
           <div class="hero-image">
-            <img src="images/IMG_0162-min.JPG" alt="Adrian Kieback" />
+            <img src="images/SEMICON_Headsots2025-47.jpg" alt="Adrian Kieback" />
           </div>
       
           <!-- Right column: text & button -->
@@ -117,7 +125,7 @@
     <section id="work-experience" class="content-section">
       <h2>Work Experience</h2>
 
-      <div class="job-entry">
+      <div class="job-entry content-card">
         <h3>Machine Learning Researcher I <span class="job-dates">09/2023 – Present</span></h3>
         <p>James Silberrad Brown Center for Artificial Intelligence, San Diego, USA</p>
         <ul>
@@ -131,7 +139,7 @@
         </ul>
       </div>
 
-      <div class="job-entry">
+      <div class="job-entry content-card">
         <h3>Data Science Intern <span class="job-dates">02/2024 – 05/2024</span></h3>
         <p>SANDAG, San Diego, USA</p>
         <ul>
@@ -141,7 +149,7 @@
         </ul>
       </div>
 
-      <div class="job-entry">
+      <div class="job-entry content-card">
         <h3>Data Analyst Research / Graduate Assistant <span class="job-dates">08/2023 – 05/2024</span></h3>
         <p>San Diego State University, San Diego, USA</p>
         <ul>
@@ -151,7 +159,7 @@
         </ul>
       </div>
 
-      <div class="job-entry">
+      <div class="job-entry content-card">
         <h3>Business Scientist Intern / Bachelor Thesis Author <span class="job-dates">02/2022 – 08/2022</span></h3>
         <p>Carl Zeiss AG, Aalen, Germany</p>
         <ul>
@@ -159,6 +167,26 @@
           <li>Performed stakeholder interviews and built a forecasting dashboard, improving data-driven decisions.</li>
           <li>Influenced software choice, achieving annual savings of \$30,000.</li>
         </ul>
+    </div>
+    </section>
+
+    <!-- ===== Publications Section ===== -->
+    <section id="publications" class="content-section">
+      <h2>Publications</h2>
+
+      <div class="publication-item content-card">
+        <h3>DAWZY: AI for Music (NeurIPS 2025 Workshop)</h3>
+        <p>
+          Aaron C Elkins, Sanchit Singh, Adrian Kieback, Sawyer Blankenship, Uyiosa Philip Amadasun, Aman Chadha<br>
+          Accepted to the NeurIPS 2025 AI for Music Workshop; presenting December 7, 2025.
+        </p>
+        <div class="publication-links">
+          <a href="files/DAWZY_new.pdf" target="_blank" rel="noopener noreferrer">Published version</a>
+          <a href="files/DAWZY_old.pdf" target="_blank" rel="noopener noreferrer">Pre-print</a>
+          <a href="files/NeurIPS Dawzy 2 Page.pdf" target="_blank" rel="noopener noreferrer">Demo paper</a>
+          <a href="https://www.youtube.com/watch?v=RQmCuYLkEDk" target="_blank" rel="noopener noreferrer">Project demo</a>
+          <a href="files/NeurIPS Poster.pdf" target="_blank" rel="noopener noreferrer">Conference poster</a>
+        </div>
       </div>
     </section>
 
@@ -166,7 +194,7 @@
     <section id="projects" class="content-section">
       <h2>Projects</h2>
 
-      <div class="project-item">
+      <div class="project-item content-card">
         <h3>Baseball Prediction</h3>
         <ul>
           <li>Developed a Dockerized Python tool for statistical analysis and predictive modeling, generating HTML reports.</li>
@@ -175,7 +203,7 @@
         </ul>
       </div>
 
-      <div class="project-item">
+      <div class="project-item content-card">
         <h3>Interactive Web-Based Visualization of Public Health Data</h3>
         <ul>
           <li>Created interactive web maps with p5.js and Leaflet.js to show surgical site infection data across California.</li>
@@ -188,7 +216,7 @@
     <section id="education" class="content-section">
       <h2>Education</h2>
 
-      <div class="education-entry">
+      <div class="education-entry content-card">
         <h3>San Diego State University | MS Big Data Analytics (Summa cum laude)</h3>
         <p>GPA: 3.9</p>
         <ul>
@@ -196,7 +224,7 @@
         </ul>
       </div>
 
-      <div class="education-entry">
+      <div class="education-entry content-card">
         <h3>Albstadt-Sigmaringen University | BS Business Informatics</h3>
         <p>GPA: 3.5</p>
         <ul>
@@ -208,7 +236,7 @@
     <!-- ===== Contact Section (Inline SVGs) ===== -->
     <section id="contact" class="content-section">
         <h2>Contact</h2>
-        <p>
+        <p class="contact-icons">
           <!-- Email Icon Inline -->
           <a href="mailto:Adrian.Kieback@gmail.com" class="icon-link">
             <svg 

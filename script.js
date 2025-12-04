@@ -1,4 +1,24 @@
 let canHideNavbar = true;
+function updateNavMode() {
+    const mainNav = document.querySelector('.main-nav');
+    const navRight = document.querySelector('.nav-right');
+    const burger = document.querySelector('.burger-menu');
+    const brand = document.querySelector('.brand');
+
+    if (!mainNav || !navRight || !burger) return;
+
+    document.body.classList.remove('nav-condensed');
+
+    const navStyle = getComputedStyle(mainNav);
+    const horizontalPadding = parseFloat(navStyle.paddingLeft) + parseFloat(navStyle.paddingRight);
+    const availableWidth = mainNav.clientWidth - horizontalPadding;
+    const neededWidth = navRight.scrollWidth + (brand ? brand.scrollWidth : 0) + 20;
+
+    if (neededWidth > availableWidth) {
+        document.body.classList.add('nav-condensed');
+    }
+}
+window.addEventListener('load', updateNavMode);
 
 function toggleMenu() {
     const pageContainer = document.getElementById("page-container");
@@ -18,6 +38,7 @@ function toggleMenu() {
 
 // Close menu when clicking a nav link
 document.addEventListener('DOMContentLoaded', () => {
+    updateNavMode();
     const mobileNavLinks = document.querySelectorAll('.nav-mobile-menu .nav-link');
     if (mobileNavLinks.length > 0) {
         mobileNavLinks.forEach(link => {
@@ -78,6 +99,7 @@ window.addEventListener("resize", () => {
             burgerIcon.classList.remove("change");
         }
     }
+    updateNavMode();
 });
 
 // Hide navbar & burger on scroll down, show on scroll up
