@@ -129,6 +129,19 @@
       <h2>Publications</h2>
 
       <div class="publication-item content-card">
+        <h3>Soft Clustering Anchors for Self-Supervised Speech Representation Learning in Joint Embedding Prediction Architectures <span class="pub-badge">Under Review – ICML 2026</span></h3>
+        <p>
+          Georgios Ioannides, Adrian Kieback<sup>*</sup>, Judah Goldfeder<sup>*</sup>, Yann LeCun, Aman Chadha, Aaron Elkins, Linsey Pang, Ravid Shwartz-Ziv<br>
+          <em>* Equal contribution</em><br>
+          Under review at ICML 2026; preprint available on arXiv (January 2026).
+        </p>
+        <div class="publication-links">
+          <a href="files/JEPA_GMM_2026.pdf" target="_blank" rel="noopener noreferrer">Preprint</a>
+          <a href="https://arxiv.org/abs/2602.09040" target="_blank" rel="noopener noreferrer">arXiv:2602.09040</a>
+        </div>
+      </div>
+
+      <div class="publication-item content-card">
         <h3>DAWZY: AI for Music (NeurIPS 2025 Workshop)</h3>
         <p>
           Aaron C Elkins, Sanchit Singh, Adrian Kieback, Sawyer Blankenship, Uyiosa Philip Amadasun, Aman Chadha<br>
@@ -158,6 +171,11 @@
           <li>Optimized and fine-tuned stable diffusion models (LAION 5B dataset), improving performance and efficiency.</li>
           <li>Published research findings on 
             <a href="https://arxiv.org/abs/2409.00391" target="_blank">arxiv.org/abs/2409.00391</a>.
+          </li>
+          <li>Developed GMM-Anchored JEPA, a self-supervised speech representation learning architecture that fits a Gaussian Mixture Model once on log-mel spectrograms and uses frozen soft posteriors as auxiliary targets, eliminating the need for iterative re-clustering required by HuBERT and WavLM.</li>
+          <li>Trained and evaluated on ~50k hours of speech using a DGX B200 cluster (8 GPUs, 1.4 TB VRAM); achieved 28.68% WER on ASR (vs. 33.22% WavLM-style baseline), 67.76% accuracy on emotion recognition, and 64.7% F1 on slot filling.</li>
+          <li>Equal-contribution author on resulting paper submitted to ICML 2026 and published as arXiv preprint 
+            <a href="https://arxiv.org/abs/2602.09040" target="_blank">arXiv:2602.09040</a>.
           </li>
         </ul>
       </div>
