@@ -13,7 +13,7 @@
   /* ===== Body Styles ===== */
 body {
   font-family: 'Inter', Arial, sans-serif;
-  background-color: #2C4A3F; /* Natural green */
+  background-color: #001a33; /* Dark navy */
   color: #F5F5F5; /* Light neutral text */
   display: flex;
     flex-direction: column;
@@ -47,7 +47,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #2C4A3F; /* Match body background */
+    background-color: #001a33; /* Match body background */
     padding: 10px 20px;
     border-radius: 0 0 15px 15px;
     transition: transform 0.3s ease-in-out;
@@ -75,7 +75,7 @@ body {
 }
 
 .nav-right .nav-link:hover {
-  background-color: #588D74; /* Softer green */
+  background-color: #003366; /* Medium navy */
   border-radius: 10px;
 }
 
@@ -145,7 +145,7 @@ body.nav-condensed .burger-menu {
     position: fixed;
     top: 0;
     right: 0;
-    background-color: #588D74;
+    background-color: #003366;
     height: 100vh;
     width: 0;
     overflow: hidden;
@@ -186,7 +186,7 @@ body.nav-condensed .burger-menu {
     min-height: 80vh;
     position: relative;
     margin-top: 60px;
-    background-color: #2C4A3F; /* Match body background */
+    background-color: #001a33; /* Match body background */
     padding: 20px;
   }
   
@@ -242,7 +242,7 @@ body.nav-condensed .burger-menu {
   .btn {
     text-decoration: none;
     background-color: #F5F5F5;
-    color: #2C4A3F;
+    color: #001a33;
     padding: 10px 20px;
     font-weight: bold;
     border-radius: 5px;
@@ -250,7 +250,7 @@ body.nav-condensed .burger-menu {
   }
   
   .btn:hover {
-    background-color: #7091E6;
+    background-color: #0059b3;
     color: #FFFFFF;
   }
   
@@ -334,17 +334,17 @@ ul {
   }
 
   .publication-links a {
-    color: #A8DADC;
+    color: #0066cc;
     text-decoration: none;
     font-weight: 600;
     padding: 8px 12px;
-    border: 1px solid rgba(168, 218, 220, 0.4);
+    border: 1px solid rgba(0, 102, 204, 0.4);
     border-radius: 8px;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
   }
 
   .publication-links a:hover {
-    background-color: rgba(168, 218, 220, 0.2);
+    background-color: rgba(0, 102, 204, 0.2);
     color: #FFFFFF;
     transform: translateY(-2px);
   }
@@ -353,7 +353,7 @@ ul {
   .footer {
     text-align: center;
     padding: 20px;
-    background-color: #2C4A3F;
+    background-color: #001a33;
     border-radius: 15px 15px 0 0;
     margin-top: 40px;
   }
@@ -441,14 +441,14 @@ ul {
 .profile-title {
   font-size: 1.2rem;
   margin-bottom: 1rem;
-  color: #A8DADC;
+  color: #0066cc;
   font-weight: 300;
 }
 
 .profile-tagline {
   font-size: 1.1rem;
   margin-bottom: 0.5rem; /* Reduced from 1.5rem */
-  color: #A8DADC;
+  color: #0066cc;
   font-weight: 300;
   max-width: 600px;
   text-align: center;
@@ -468,7 +468,7 @@ ul {
 
 .subtitle {
   font-size: 1.2rem;
-  color: #A8DADC;
+  color: #0066cc;
   margin-bottom: 1rem;
 }
 
@@ -543,12 +543,12 @@ ul {
 /* Add a subtle pattern to the cards */
 .professional-card {
   background: linear-gradient(135deg, rgba(64, 93, 153, 0.2) 0%, rgba(32, 46, 76, 0.2) 100%);
-  border-top: 5px solid #7091E6;
+  border-top: 5px solid #0059b3;
 }
 
 .personal-card {
   background: linear-gradient(135deg, rgba(153, 64, 64, 0.2) 0%, rgba(76, 32, 32, 0.2) 100%);
-  border-top: 5px solid #E67070;
+  border-top: 5px solid #0059b3;
 }
 
 /* Enhance icon animation */
@@ -581,12 +581,12 @@ ul {
 }
 
 .professional-btn {
-  background-color: #7091E6;
+  background-color: #0059b3;
   color: #F5F5F5;
 }
 
 .personal-btn {
-  background-color: #E67070;
+  background-color: #0059b3;
   color: #F5F5F5;
 }
 
@@ -600,11 +600,11 @@ ul {
 }
 
 .professional-btn:hover {
-  background-color: #5a7bcc;
+  background-color: #004080;
 }
 
 .personal-btn:hover {
-  background-color: #cc5a5a;
+  background-color: #004080;
 }
 
 /* Page load animations */
@@ -648,8 +648,8 @@ a[x-apple-data-detectors] {
 
 /* Improve accessibility */
 .choice-card:focus-visible {
-  outline: 3px solid #A8DADC;
-  box-shadow: 0 0 0 3px rgba(168, 218, 220, 0.5);
+  outline: 3px solid #0066cc;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.5);
 }
 
 /* Apply bounce effect to the button arrow on hover */
@@ -730,17 +730,17 @@ a[x-apple-data-detectors] {
 }
 
 .publication-links a {
-  color: #A8DADC;
+  color: #0066cc;
   text-decoration: none;
   font-weight: 600;
   padding: 8px 12px;
-  border: 1px solid rgba(168, 218, 220, 0.4);
+  border: 1px solid rgba(0, 102, 204, 0.4);
   border-radius: 8px;
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
 .publication-links a:hover {
-  background-color: rgba(168, 218, 220, 0.2);
+  background-color: rgba(0, 102, 204, 0.2);
   color: #FFFFFF;
   transform: translateY(-2px);
 }
@@ -749,7 +749,7 @@ a[x-apple-data-detectors] {
 .footer {
   text-align: center;
   padding: 20px;
-    background-color: #2C4A3F;
+    background-color: #001a33;
     border-radius: 15px 15px 0 0;
     margin-top: 40px;
   }
@@ -837,14 +837,14 @@ a[x-apple-data-detectors] {
 .profile-title {
   font-size: 1.2rem;
   margin-bottom: 1rem;
-  color: #A8DADC;
+  color: #0066cc;
   font-weight: 300;
 }
 
 .profile-tagline {
   font-size: 1.1rem;
   margin-bottom: 0.5rem; /* Reduced from 1.5rem */
-  color: #A8DADC;
+  color: #0066cc;
   font-weight: 300;
   max-width: 600px;
   text-align: center;
@@ -864,7 +864,7 @@ a[x-apple-data-detectors] {
 
 .subtitle {
   font-size: 1.2rem;
-  color: #A8DADC;
+  color: #0066cc;
   margin-bottom: 1rem;
 }
 
@@ -939,12 +939,12 @@ a[x-apple-data-detectors] {
 /* Add a subtle pattern to the cards */
 .professional-card {
   background: linear-gradient(135deg, rgba(64, 93, 153, 0.2) 0%, rgba(32, 46, 76, 0.2) 100%);
-  border-top: 5px solid #7091E6;
+  border-top: 5px solid #0059b3;
 }
 
 .personal-card {
   background: linear-gradient(135deg, rgba(153, 64, 64, 0.2) 0%, rgba(76, 32, 32, 0.2) 100%);
-  border-top: 5px solid #E67070;
+  border-top: 5px solid #0059b3;
 }
 
 /* Enhance icon animation */
@@ -977,12 +977,12 @@ a[x-apple-data-detectors] {
 }
 
 .professional-btn {
-  background-color: #7091E6;
+  background-color: #0059b3;
   color: #F5F5F5;
 }
 
 .personal-btn {
-  background-color: #E67070;
+  background-color: #0059b3;
   color: #F5F5F5;
 }
 
@@ -996,11 +996,11 @@ a[x-apple-data-detectors] {
 }
 
 .professional-btn:hover {
-  background-color: #5a7bcc;
+  background-color: #004080;
 }
 
 .personal-btn:hover {
-  background-color: #cc5a5a;
+  background-color: #004080;
 }
 
 /* Page load animations */
@@ -1037,8 +1037,8 @@ body.page-loaded {
 
 /* Improve accessibility */
 .choice-card:focus-visible {
-  outline: 3px solid #A8DADC;
-  box-shadow: 0 0 0 3px rgba(168, 218, 220, 0.5);
+  outline: 3px solid #0066cc;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.5);
 }
 
 /* Apply bounce effect to the button arrow on hover */
@@ -1103,7 +1103,7 @@ body.page-loaded {
   .footer {
     text-align: center;
     padding: 20px;
-    background-color: #2C4A3F;
+    background-color: #001a33;
     border-radius: 15px 15px 0 0;
     margin-top: 40px;
   }
@@ -1191,14 +1191,14 @@ body.page-loaded {
 .profile-title {
   font-size: 1.2rem;
   margin-bottom: 1rem;
-  color: #A8DADC;
+  color: #0066cc;
   font-weight: 300;
 }
 
 .profile-tagline {
   font-size: 1.1rem;
   margin-bottom: 0.5rem; /* Reduced from 1.5rem */
-  color: #A8DADC;
+  color: #0066cc;
   font-weight: 300;
   max-width: 600px;
   text-align: center;
@@ -1218,7 +1218,7 @@ body.page-loaded {
 
 .subtitle {
   font-size: 1.2rem;
-  color: #A8DADC;
+  color: #0066cc;
   margin-bottom: 1rem;
 }
 
@@ -1293,12 +1293,12 @@ body.page-loaded {
 /* Add a subtle pattern to the cards */
 .professional-card {
   background: linear-gradient(135deg, rgba(64, 93, 153, 0.2) 0%, rgba(32, 46, 76, 0.2) 100%);
-  border-top: 5px solid #7091E6;
+  border-top: 5px solid #0059b3;
 }
 
 .personal-card {
   background: linear-gradient(135deg, rgba(153, 64, 64, 0.2) 0%, rgba(76, 32, 32, 0.2) 100%);
-  border-top: 5px solid #E67070;
+  border-top: 5px solid #0059b3;
 }
 
 /* Enhance icon animation */
@@ -1331,12 +1331,12 @@ body.page-loaded {
 }
 
 .professional-btn {
-  background-color: #7091E6;
+  background-color: #0059b3;
   color: #F5F5F5;
 }
 
 .personal-btn {
-  background-color: #E67070;
+  background-color: #0059b3;
   color: #F5F5F5;
 }
 
@@ -1350,11 +1350,11 @@ body.page-loaded {
 }
 
 .professional-btn:hover {
-  background-color: #5a7bcc;
+  background-color: #004080;
 }
 
 .personal-btn:hover {
-  background-color: #cc5a5a;
+  background-color: #004080;
 }
 
 /* Page load animations */
@@ -1391,8 +1391,8 @@ body.page-loaded {
 
 /* Improve accessibility */
 .choice-card:focus-visible {
-  outline: 3px solid #A8DADC;
-  box-shadow: 0 0 0 3px rgba(168, 218, 220, 0.5);
+  outline: 3px solid #0066cc;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.5);
 }
 
 /* Apply bounce effect to the button arrow on hover */
@@ -1614,7 +1614,7 @@ body.page-loaded {
 }
 
 .choice-card:focus {
-  outline: 3px solid #A8DADC;
+  outline: 3px solid #0066cc;
   transform: translateY(-5px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
@@ -1624,7 +1624,7 @@ body.page-loaded {
 }
 
 .choice-card:focus-visible {
-  outline: 3px solid #A8DADC;
+  outline: 3px solid #0066cc;
 }
 
 /* Improved card pattern animations */
@@ -1696,11 +1696,11 @@ body.page-loaded {
 }
 
 .breadcrumb-professional {
-  color: #7091E6;
+  color: #0059b3;
 }
 
 .breadcrumb-personal {
-  color: #E67070;
+  color: #0059b3;
 }
 
 /* Minimal loading indicator for fast connections */
