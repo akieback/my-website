@@ -232,6 +232,13 @@ body.nav-condensed .burger-menu {
     margin-bottom: 20px;
   }
   
+  .hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 4px;
+  }
+
   .btn {
     text-decoration: none;
     background-color: #F5F5F5;
