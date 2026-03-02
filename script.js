@@ -1,4 +1,13 @@
 let canHideNavbar = true;
+
+// Prevent browser from restoring scroll position on refresh
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+window.addEventListener('beforeunload', () => {
+    window.scrollTo(0, 0);
+});
+
 function updateNavMode() {
     const mainNav = document.querySelector('.main-nav');
     const navRight = document.querySelector('.nav-right');
@@ -150,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
         overlay.style.left = '0';
         overlay.style.width = '100%';
         overlay.style.height = '100%';
-        overlay.style.backgroundColor = '#2C4A3F';
+        overlay.style.backgroundColor = '#001a33';
         overlay.style.zIndex = '9999';
         overlay.style.opacity = '0';
         overlay.style.transition = 'opacity 0.4s ease';
