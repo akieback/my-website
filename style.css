@@ -9,6 +9,11 @@
     height: 100%;
     scroll-behavior: smooth;
   }
+
+  /* Prevent visited links from turning purple */
+  a, a:visited {
+    color: inherit;
+  }
   
   /* ===== Body Styles ===== */
 body {
