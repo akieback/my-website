@@ -14,6 +14,11 @@
   a, a:visited {
     color: inherit;
   }
+
+  /* Buttons always keep their explicit color regardless of visited state */
+  .btn, .btn:visited {
+    color: #001a33;
+  }
   
   /* ===== Body Styles ===== */
 body {
