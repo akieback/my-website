@@ -1,0 +1,5 @@
+.DS_Store
+
+# Plain-text notebook sources stay on this machine. Only the encrypted
+# data/notebook.json is published.
+notebook-src/

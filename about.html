@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About · Adrian Kieback</title>
+  <meta name="description" content="Experience, education and skills of Adrian Kieback, machine learning researcher in speech and audio.">
+  <meta name="theme-color" content="#0c1922">
+  <link rel="icon" href="icons/mark.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="icons/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script>document.documentElement.classList.add("js")</script>
+  <script defer src="assets/js/site.js"></script>
+</head>
+<body data-page="about">
+<main id="main">
+  <header class="page-head">
+    <canvas aria-hidden="true"></canvas>
+    <div class="wrap">
+      <p class="eyebrow">About</p>
+      <h1>The longer <em>version.</em></h1>
+      <p class="lede">From business informatics in Germany to speech research in San Diego. Here's the route so far.</p>
+      <div class="hero-actions" style="margin-top:26px">
+        <a class="btn btn-glow" href="files/Adrian_Kieback_CV.pdf" target="_blank" rel="noopener">Download CV ↓</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="wrap">
+
+      <div class="intro-grid reveal" style="margin-bottom:56px">
+        <div class="intro-text">
+          <p>I'm a machine learning researcher focused on speech and audio. My work spans self-supervised representation learning, where models learn the structure of speech from huge amounts of unlabeled audio, and applied work that uses the voice to detect signs of depression and other mental health conditions.</p>
+          <p>I like turning open questions into systems that actually run: compact architectures, careful evaluation, and training at scale on clusters like a DGX B200. I'm fluent in Python and PyTorch and comfortable everywhere from the math to the data pipeline.</p>
+          <p>Before research I worked in industry at Carl Zeiss and SANDAG, which taught me to care about stakeholders, clean data, and shipping.</p>
+        </div>
+        <figure class="portrait" style="margin:0">
+          <img src="images/portrait.jpg" alt="Portrait of Adrian Kieback" width="800" height="1200" loading="lazy">
+        </figure>
+      </div>
+
+      <div class="cv-block reveal">
+        <h3>Research</h3>
+        <div>
+          <div class="role">
+            <div class="role-head"><h4>Machine Learning Researcher I</h4><span class="dates">09/2023 – present</span></div>
+            <p class="org">James Silberrad Brown Center for Artificial Intelligence · San Diego</p>
+            <ul>
+              <li>Developed GMM-Anchored JEPA, a self-supervised speech architecture that anchors a JEPA on frozen soft GMM posteriors instead of iterative re-clustering (<a href="paper.html?id=gmm-anchored-jepa">paper</a>).</li>
+              <li>Trained on ~50k hours of speech on a DGX B200 cluster; 28.68% WER vs 33.22% for a WavLM-style baseline, plus gains on emotion recognition and slot filling.</li>
+              <li>Built explainable depression-detection models from speech; +21% macro F1 over prior state of the art while being 72% more parameter-efficient (<a href="paper.html?id=density-adaptive-attention">paper</a>).</li>
+              <li>Fine-tuned and optimized Stable Diffusion models on LAION-5B.</li>
+            </ul>
+          </div>
+          <div class="role">
+            <div class="role-head"><h4>Data Analyst Research / Graduate Assistant</h4><span class="dates">08/2023 – 05/2024</span></div>
+            <p class="org">San Diego State University</p>
+            <ul>
+              <li>Automated web-scraping data collection in Python; Python and R data processing.</li>
+              <li>Proctored and graded exams for two courses.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-block reveal">
+        <h3>Industry</h3>
+        <div>
+          <div class="role">
+            <div class="role-head"><h4>Data Science Intern</h4><span class="dates">02/2024 – 05/2024</span></div>
+            <p class="org">SANDAG · San Diego</p>
+            <ul>
+              <li>Geospatial visualizations tracking the UN Sustainable Development Goals for San Diego County.</li>
+              <li>Automated predictive analytics for toll operations across 90,000+ customer accounts.</li>
+            </ul>
+          </div>
+          <div class="role">
+            <div class="role-head"><h4>Business Scientist Intern · Bachelor Thesis</h4><span class="dates">02/2022 – 08/2022</span></div>
+            <p class="org">Carl Zeiss AG · Aalen, Germany</p>
+            <ul>
+              <li>BI reporting for 1,200+ machines worldwide, integrating live data from multiple sources.</li>
+              <li>Built a forecasting dashboard from stakeholder interviews; influenced a software decision saving $30,000 per year.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-block reveal">
+        <h3>Education</h3>
+        <div>
+          <div class="role">
+            <div class="role-head"><h4>MS Big Data Analytics</h4><span class="dates">GPA 3.9</span></div>
+            <p class="org">San Diego State University</p>
+            <ul><li>Thesis: “Enhancing Mental Health Diagnosis with Representation Learning: A Transformer-Based Approach”</li></ul>
+          </div>
+          <div class="role">
+            <div class="role-head"><h4>BS Business Informatics</h4><span class="dates">GPA 3.5</span></div>
+            <p class="org">Albstadt-Sigmaringen University, Germany</p>
+            <ul><li>Thesis: “Conceptual design of a central tool for the globally standardized presentation and analysis of process and machine data”</li></ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-block reveal">
+        <h3>Side projects</h3>
+        <div>
+          <div class="role">
+            <div class="role-head"><h4>Baseball prediction</h4></div>
+            <ul>
+              <li>Dockerized Python tool with 20+ engineered time-series features (SQL, PySpark, MariaDB) and an Elo ranking system; compared six models with ROC and cross-validation.</li>
+            </ul>
+          </div>
+          <div class="role">
+            <div class="role-head"><h4>Public health data, mapped</h4></div>
+            <ul>
+              <li>Interactive p5.js and Leaflet maps of surgical-site infection data across California (26,000+ rows).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="cv-block reveal">
+        <h3>Toolkit</h3>
+        <div class="skills">
+          <div><h4>Math &amp; statistics</h4><p>Calculus, linear algebra, probability, statistical inference, Bayesian modeling, time series</p></div>
+          <div><h4>ML</h4><p>PyTorch, Transformers, scikit-learn, TensorFlow, NumPy, Pandas</p></div>
+          <div><h4>Languages</h4><p>Python, R, JavaScript, Java, C++, SQL</p></div>
+          <div><h4>Infrastructure</h4><p>Docker, Spark, AWS EC2, Linux, CI/CD, multi-GPU training</p></div>
+          <div><h4>Spoken</h4><p>German (native), English (fluent), French (basic)</p></div>
+          <div><h4>Certifications</h4><p>Professional Scrum Master (PSM I), iOS App Development</p></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</main>
+</body>
+</html>

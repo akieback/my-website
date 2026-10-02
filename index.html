@@ -1,14 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="0; url=Professional.html">
-  <title>Adrian Kieback | ML Researcher</title>
-  <link rel="icon" href="icons/favicon.ico" type="image/x-icon">
-  <link rel="canonical" href="Professional.html">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Adrian Kieback · Speech & ML Researcher</title>
+  <meta name="description" content="Adrian Kieback is a machine learning researcher working on self-supervised speech representation learning and voice-based mental health. Papers at NeurIPS 2025 workshops and on arXiv.">
+  <meta property="og:title" content="Adrian Kieback · Speech & ML Researcher">
+  <meta property="og:description" content="Teaching machines to listen. Self-supervised speech, voice & mental health.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://adriankieback.com/">
+  <meta property="og:image" content="https://adriankieback.com/images/portrait.jpg">
+  <meta name="theme-color" content="#0c1922">
+  <link rel="canonical" href="https://adriankieback.com/">
+  <link rel="icon" href="icons/mark.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="icons/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script>document.documentElement.classList.add("js")</script>
+  <script defer src="assets/js/site.js"></script>
+  <script defer src="data/papers.js"></script>
+  <script defer src="data/site.js"></script>
+  <script defer src="data/life.js"></script>
+  <script defer src="assets/js/hero.js"></script>
+  <script defer src="assets/js/home.js"></script>
 </head>
-<body>
-  <p>Redirecting to <a href="Professional.html">Adrian Kieback's Portfolio</a>...</p>
+<body data-page="home">
+<main id="main">
+
+  <section class="hero" aria-label="Introduction">
+    <canvas aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div class="coords"><span>32.71° N, 117.16° W</span><span>San Diego</span><span>speech · ocean · rock</span></div>
+      <h1>Teaching machines to <em>listen.</em></h1>
+      <p class="hero-sub">I'm Adrian Kieback, a machine learning researcher working on self-supervised speech and on the voice as a signal for mental health.</p>
+      <div class="hero-actions">
+        <a class="btn btn-glow" href="research.html">See my research →</a>
+        <a class="btn btn-ghost-light" href="about.html">More about me</a>
+      </div>
+      <p class="ticker" aria-live="off"><span class="label">now:</span> <span class="word" id="ticker">pretraining speech encoders</span></p>
+    </div>
+    <a class="scroll-cue" href="#hello">descend</a>
+  </section>
+
+  <section class="section" id="hello">
+    <div class="wrap">
+      <div class="intro-grid">
+        <div class="intro-text reveal">
+          <p class="eyebrow">Hello</p>
+          <h2>Researcher by day, <em>salt water &amp; chalk</em> the rest.</h2>
+          <p>I'm a machine learning researcher at the James Silberrad Brown Center for Artificial Intelligence in San Diego. I study how models can learn from speech with few or no labels, and how the voice can help us understand mental health.</p>
+          <p>Recently that has meant self-supervised speech representations with Yann LeCun and Ravid Shwartz-Ziv, explainable depression detection from voice recordings, and an AI music co-creation tool we presented at NeurIPS 2025.</p>
+          <p>When I'm not training models I'm usually in the ocean or on a wall. Both teach the same thing research does: read the conditions, commit, and enjoy the process.</p>
+          <div class="facts">
+            <div><b>3</b><span>papers &amp; preprints</span></div>
+            <div><b>50k h</b><span>of speech pretrained on</span></div>
+            <div><b>NeurIPS</b><span>2025 workshop presenter</span></div>
+          </div>
+        </div>
+        <figure class="portrait reveal" style="margin:0">
+          <img src="images/portrait.jpg" alt="Portrait of Adrian Kieback" width="800" height="1200" loading="lazy">
+          <span class="tag"><b>●</b> San Diego, CA · DE native</span>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="research">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">Research</p>
+          <h2>Papers &amp; the stories behind them</h2>
+        </div>
+        <a class="arrow-link" href="research.html">All research <span>→</span></a>
+      </div>
+      <div class="paper-list" id="paper-list"></div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="now">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">Right now</p>
+          <h2>On the wall at the moment</h2>
+        </div>
+      </div>
+      <div class="now-grid" id="now-grid"></div>
+    </div>
+  </section>
+
+  <section class="section" id="log">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">Field log</p>
+          <h2>Recent waypoints</h2>
+        </div>
+      </div>
+      <ol class="log reveal" id="log-list"></ol>
+    </div>
+  </section>
+
+  <section class="section" id="life">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">Off the clock</p>
+          <h2>Ocean &amp; mountains</h2>
+        </div>
+        <a class="arrow-link" href="life.html">The other half <span>→</span></a>
+      </div>
+      <div class="life-teaser" id="life-teaser">
+        <a class="chapter reveal" href="life.html#ocean" data-scene="ocean">
+          <span class="k">Salt water</span><h3>Surf</h3><p>Early sessions, cold water, and the patience to wait for the right set.</p>
+        </a>
+        <a class="chapter reveal" href="life.html#mountains" data-scene="mountains">
+          <span class="k">Granite</span><h3>Climb</h3><p>Reading a route, trusting the gear, and the quiet at the top.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
 </body>
 </html>

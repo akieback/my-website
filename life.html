@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Life · Adrian Kieback</title>
+  <meta name="description" content="Off the clock: surfing, climbing, and life between the ocean and the mountains.">
+  <meta name="theme-color" content="#0c1922">
+  <link rel="icon" href="icons/mark.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="icons/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script>document.documentElement.classList.add("js")</script>
+  <script defer src="assets/js/site.js"></script>
+  <script defer src="data/life.js"></script>
+  <script defer src="assets/js/life.js"></script>
+</head>
+<body data-page="life">
+<main id="main">
+  <header class="page-head">
+    <canvas aria-hidden="true"></canvas>
+    <div class="wrap">
+      <p class="eyebrow">Off the clock</p>
+      <h1>Salt water &amp; <em>granite.</em></h1>
+      <p class="lede">The other half of me. I surf, I climb, and a surprising number of my ideas show up on the paddle back or the walk-off.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="life-teaser">
+        <article class="chapter reveal" id="ocean" data-scene="ocean" style="min-height:420px">
+          <span class="k">Salt water</span>
+          <h3>Surf</h3>
+          <p>Early sessions, cold water, and the patience to wait for the right set. Reading a swell isn't so different from reading a spectrogram: energy moving through a medium, and learning to see the pattern in the noise.</p>
+        </article>
+        <article class="chapter reveal" id="mountains" data-scene="mountains" style="min-height:420px">
+          <span class="k">Granite</span>
+          <h3>Climb</h3>
+          <p>Reading a route, trusting the gear, and the quiet at the top. Climbing taught me to break hard problems into moves, and that falling is part of getting it right.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="moments-section" hidden>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <p class="eyebrow">Moments</p>
+          <h2>From the water &amp; the wall</h2>
+        </div>
+        <div class="filters" id="moment-filters" role="group" aria-label="Filter moments"></div>
+      </div>
+      <div class="gallery" id="moments"></div>
+    </div>
+  </section>
+</main>
+</body>
+</html>
