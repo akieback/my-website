@@ -394,7 +394,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Fill the Google Scholar stats table from data/scholar.json (refreshed by a daily GitHub Action)
+// Fill the Google Scholar stats table from data/scholar.json (refreshed daily by scripts/update_scholar.py)
 document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('scholar-stats');
     if (!container) return;

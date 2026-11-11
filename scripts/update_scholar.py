@@ -1,7 +1,8 @@
 """Fetch citation metrics from a Google Scholar profile and write them to data/scholar.json.
 
-Run by .github/workflows/update-scholar.yml. Only rewrites the JSON when a metric
-changes, so the workflow commits nothing on days without new citations.
+Run daily by a launchd job on Adrian's Mac (~/.scholar-updater/run.sh); Scholar blocks
+cloud runners like GitHub Actions. Only rewrites the JSON when a metric
+changes, so nothing is committed on days without new citations.
 """
 import datetime
 import html
