@@ -421,3 +421,38 @@ document.addEventListener('DOMContentLoaded', () => {
             // Keep the fallback numbers baked into the HTML
         });
 });
+
+// Fade cards in as they scroll into view, and highlight the nav link of the section in view
+document.addEventListener('DOMContentLoaded', () => {
+    const revealItems = document.querySelectorAll('.reveal');
+    if (revealItems.length > 0) {
+        if ('IntersectionObserver' in window) {
+            const revealObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: '0px 0px -8% 0px' });
+            revealItems.forEach(item => revealObserver.observe(item));
+        } else {
+            revealItems.forEach(item => item.classList.add('in'));
+        }
+    }
+
+    const navLinks = document.querySelectorAll('.nav-right .nav-link[href^="#"]');
+    if (navLinks.length > 0 && 'IntersectionObserver' in window) {
+        const linkFor = id => document.querySelector(`.nav-right .nav-link[href="#${id}"]`);
+        const sectionObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const link = linkFor(entry.target.id);
+                if (!link) return;
+                navLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+            });
+        }, { rootMargin: '-45% 0px -50% 0px' });
+        document.querySelectorAll('main section[id]').forEach(section => sectionObserver.observe(section));
+    }
+});
