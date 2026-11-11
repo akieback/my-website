@@ -422,25 +422,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 });
 
-// Fade cards in as they scroll into view, and highlight the nav link of the section in view
-document.addEventListener('DOMContentLoaded', () => {
+// Fade cards in as they scroll into view. Runs right away (this script loads at the end of <body>),
+// and content is only hidden once the observer exists, so it can never get stuck invisible.
+(() => {
     const revealItems = document.querySelectorAll('.reveal');
-    if (revealItems.length > 0) {
-        if ('IntersectionObserver' in window) {
-            const revealObserver = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('in');
-                        revealObserver.unobserve(entry.target);
-                    }
-                });
-            }, { rootMargin: '0px 0px -8% 0px' });
-            revealItems.forEach(item => revealObserver.observe(item));
-        } else {
-            revealItems.forEach(item => item.classList.add('in'));
-        }
+    if (revealItems.length > 0 && 'IntersectionObserver' in window) {
+        document.documentElement.classList.add('reveal-ready');
+        const revealObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '0px 0px -8% 0px' });
+        revealItems.forEach(item => revealObserver.observe(item));
     }
+})();
 
+// Highlight the nav link of the section in view
+document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-right .nav-link[href^="#"]');
     if (navLinks.length > 0 && 'IntersectionObserver' in window) {
         const linkFor = id => document.querySelector(`.nav-right .nav-link[href="#${id}"]`);
