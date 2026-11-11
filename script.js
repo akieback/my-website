@@ -393,3 +393,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// Fill the Google Scholar stats table from data/scholar.json (refreshed by a daily GitHub Action)
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('scholar-stats');
+    if (!container) return;
+
+    fetch('data/scholar.json', { cache: 'no-cache' })
+        .then(response => response.ok ? response.json() : Promise.reject(response.status))
+        .then(data => {
+            const values = { since_year: data.since_year };
+            Object.entries(data.metrics).forEach(([key, metric]) => {
+                values[`${key}.all`] = metric.all;
+                values[`${key}.since`] = metric.since;
+            });
+            if (data.updated) {
+                const date = new Date(`${data.updated}T00:00:00`);
+                values.updated = `Updated ${date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}`;
+            }
+
+            container.querySelectorAll('[data-scholar]').forEach(el => {
+                const value = values[el.dataset.scholar];
+                if (value !== undefined) el.textContent = value;
+            });
+        })
+        .catch(() => {
+            // Keep the fallback numbers baked into the HTML
+        });
+});

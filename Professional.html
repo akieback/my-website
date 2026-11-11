@@ -138,6 +138,40 @@
     <section id="publications" class="content-section">
       <h2>Publications</h2>
 
+      <!-- Values are refreshed daily from data/scholar.json (see .github/workflows/update-scholar.yml) -->
+      <div class="scholar-stats content-card" id="scholar-stats">
+        <table class="scholar-table">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">All</th>
+              <th scope="col">Since <span data-scholar="since_year">2021</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Citations</th>
+              <td data-scholar="citations.all">26</td>
+              <td data-scholar="citations.since">26</td>
+            </tr>
+            <tr>
+              <th scope="row">h-index</th>
+              <td data-scholar="h_index.all">2</td>
+              <td data-scholar="h_index.since">2</td>
+            </tr>
+            <tr>
+              <th scope="row">i10-index</th>
+              <td data-scholar="i10_index.all">1</td>
+              <td data-scholar="i10_index.since">1</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="scholar-footer">
+          <a href="https://scholar.google.com/citations?hl=en&amp;user=5lkqsjIAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar profile</a>
+          <span class="scholar-updated" data-scholar="updated"></span>
+        </div>
+      </div>
+
       <div class="publication-item content-card">
         <h3>Soft Clustering Anchors for Self-Supervised Speech Representation Learning in Joint Embedding Prediction Architectures <span class="pub-badge">Under Review – ICML 2026</span></h3>
         <p>
