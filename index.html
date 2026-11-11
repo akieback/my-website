@@ -16,13 +16,14 @@
   <link rel="alternate icon" href="icons/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
   <link rel="stylesheet" href="assets/css/site.css">
   <script>document.documentElement.classList.add("js")</script>
   <script defer src="assets/js/site.js"></script>
   <script defer src="data/papers.js"></script>
   <script defer src="data/site.js"></script>
   <script defer src="data/life.js"></script>
+  <script defer src="data/voice.js"></script>
   <script defer src="assets/js/hero.js"></script>
   <script defer src="assets/js/home.js"></script>
 </head>
@@ -32,27 +33,26 @@
   <section class="hero" aria-label="Introduction">
     <canvas aria-hidden="true"></canvas>
     <div class="wrap">
-      <div class="coords"><span>32.71° N, 117.16° W</span><span>San Diego</span><span>speech · ocean · rock</span></div>
+      <div class="coords"><span>32.71° N, 117.16° W</span><span>San Diego</span><span>speech · audio · health</span></div>
       <h1>Teaching machines to <em>listen.</em></h1>
       <p class="hero-sub">I'm Adrian Kieback, a machine learning researcher working on self-supervised speech and on the voice as a signal for mental health.</p>
       <div class="hero-actions">
         <a class="btn btn-glow" href="research.html">See my research →</a>
         <a class="btn btn-ghost-light" href="about.html">More about me</a>
       </div>
-      <p class="ticker" aria-live="off"><span class="label">now:</span> <span class="word" id="ticker">pretraining speech encoders</span></p>
     </div>
-    <a class="scroll-cue" href="#hello">descend</a>
+    <a class="scroll-cue" href="#about">scroll</a>
   </section>
 
-  <section class="section" id="hello">
+  <section class="section" id="about">
     <div class="wrap">
       <div class="intro-grid">
         <div class="intro-text reveal">
-          <p class="eyebrow">Hello</p>
-          <h2>Researcher by day, <em>salt water &amp; chalk</em> the rest.</h2>
+          <p class="eyebrow">About</p>
+          <h2>Machine learning for speech and health.</h2>
           <p>I'm a machine learning researcher at the James Silberrad Brown Center for Artificial Intelligence in San Diego. I study how models can learn from speech with few or no labels, and how the voice can help us understand mental health.</p>
           <p>Recently that has meant self-supervised speech representations with Yann LeCun and Ravid Shwartz-Ziv, explainable depression detection from voice recordings, and an AI music co-creation tool we presented at NeurIPS 2025.</p>
-          <p>When I'm not training models I'm usually in the ocean or on a wall. Both teach the same thing research does: read the conditions, commit, and enjoy the process.</p>
+          <p>I care about methods that hold up outside the benchmark: compact architectures, careful evaluation, and training at scale.</p>
           <div class="facts">
             <div><b>3</b><span>papers &amp; preprints</span></div>
             <div><b>50k h</b><span>of speech pretrained on</span></div>
@@ -61,7 +61,7 @@
         </div>
         <figure class="portrait reveal" style="margin:0">
           <img src="images/portrait.jpg" alt="Portrait of Adrian Kieback" width="800" height="1200" loading="lazy">
-          <span class="tag"><b>●</b> San Diego, CA · DE native</span>
+          <span class="tag"><b>●</b> San Diego, CA</span>
         </figure>
       </div>
     </div>
@@ -72,7 +72,7 @@
       <div class="section-head reveal">
         <div>
           <p class="eyebrow">Research</p>
-          <h2>Papers &amp; the stories behind them</h2>
+          <h2>Selected publications</h2>
         </div>
         <a class="arrow-link" href="research.html">All research <span>→</span></a>
       </div>
@@ -84,8 +84,8 @@
     <div class="wrap">
       <div class="section-head reveal">
         <div>
-          <p class="eyebrow">Right now</p>
-          <h2>On the wall at the moment</h2>
+          <p class="eyebrow">In progress</p>
+          <h2>Current projects</h2>
         </div>
       </div>
       <div class="now-grid" id="now-grid"></div>
@@ -96,24 +96,18 @@
     <div class="wrap">
       <div class="section-head reveal">
         <div>
-          <p class="eyebrow">Field log</p>
-          <h2>Recent waypoints</h2>
+          <p class="eyebrow">News</p>
+          <h2>Recent milestones</h2>
         </div>
       </div>
       <ol class="log reveal" id="log-list"></ol>
     </div>
   </section>
 
-  <section class="section" id="life">
+  <section class="section" id="outside">
     <div class="wrap">
-      <div class="section-head reveal">
-        <div>
-          <p class="eyebrow">Off the clock</p>
-          <h2>Ocean &amp; mountains</h2>
-        </div>
-        <a class="arrow-link" href="life.html">The other half <span>→</span></a>
-      </div>
-      <div class="life-teaser" id="life-teaser">
+      <p class="eyebrow reveal">Outside the lab</p>
+      <div class="life-teaser life-teaser-sm">
         <a class="chapter reveal" href="life.html#ocean" data-scene="ocean">
           <span class="k">Salt water</span><h3>Surf</h3><p>Early sessions, cold water, and the patience to wait for the right set.</p>
         </a>
@@ -123,6 +117,7 @@
       </div>
     </div>
   </section>
+
 
 </main>
 </body>

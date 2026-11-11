@@ -93,7 +93,6 @@ h1, h2, h3, h4 {
   font-weight: 500;
   line-height: 1.15;
   margin: 0 0 0.5em;
-  font-variation-settings: "SOFT" 50, "WONK" 0;
   letter-spacing: -0.01em;
   text-wrap: balance;
 }
@@ -171,9 +170,7 @@ h2 em, .page-head h1 em { font-style: italic; font-weight: 400; color: var(--glo
 }
 .site-nav.over-hero { color: var(--on-night); }
 .site-nav.scrolled {
-  background: color-mix(in srgb, var(--paper) 82%, transparent);
-  -webkit-backdrop-filter: saturate(140%) blur(12px);
-  backdrop-filter: saturate(140%) blur(12px);
+  background: color-mix(in srgb, var(--paper) 96%, transparent);
   box-shadow: 0 1px 0 var(--line);
   color: var(--ink);
 }
@@ -244,7 +241,7 @@ h2 em, .page-head h1 em { font-style: italic; font-weight: 400; color: var(--glo
   opacity: .5;
   border-right: 1px solid currentColor;
 }
-.altimeter .marker { position: absolute; right: 0; top: 0; display: flex; align-items: center; gap: 6px; transform: translateY(-50%); white-space: nowrap; }
+.altimeter .marker { position: absolute; right: 0; top: 0; display: flex; align-items: center; gap: 6px; transform: translateY(-50%); white-space: nowrap; will-change: transform; }
 .altimeter .marker b { font-weight: 500; color: var(--glow); }
 .altimeter .marker i { display: block; width: 14px; height: 2px; background: var(--glow); }
 .altimeter .cap { position: absolute; right: 14px; white-space: nowrap; opacity: .8; letter-spacing: .08em; }
@@ -260,8 +257,9 @@ h2 em, .page-head h1 em { font-style: italic; font-weight: 400; color: var(--glo
 }
 @supports (height: 100svh) { .hero { min-height: 100svh; } }
 .hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; }
+.hero canvas.hero-fx { inset: auto 0 0 0; height: auto; }
 .hero .wrap { padding-top: calc(var(--nav-h) + clamp(28px, 9vh, 110px)); position: relative; }
-.hero h1 { color: var(--on-night); max-width: 12ch; margin-bottom: 18px; font-variation-settings: "SOFT" 100, "WONK" 1; }
+.hero h1 { color: var(--on-night); max-width: 12ch; margin-bottom: 18px; }
 .hero h1 em { font-style: italic; color: #f3b58f; font-weight: 400; }
 .hero .hero-sub { font-size: clamp(1.05rem, 2vw, 1.3rem); color: #d4dde1; max-width: 46ch; margin-bottom: 26px; }
 .hero .coords { font-family: var(--mono); font-size: 0.78rem; letter-spacing: .1em; color: var(--on-night-soft); margin-bottom: 26px; display: flex; flex-wrap: wrap; gap: 6px 18px; }
@@ -275,10 +273,6 @@ h2 em, .page-head h1 em { font-style: italic; font-weight: 400; color: var(--glo
 .hero .scroll-cue::after { content: ""; width: 1px; height: 34px; background: linear-gradient(var(--on-night-soft), transparent); animation: drip 2.4s ease-in-out infinite; }
 @keyframes drip { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
 
-.ticker { font-family: var(--mono); font-size: .8rem; color: var(--on-night-soft); margin-top: 30px; min-height: 1.6em; }
-.ticker .label { color: #f3b58f; }
-.ticker .word { border-right: 1px solid currentColor; padding-right: 2px; animation: caret 1s steps(1) infinite; }
-@keyframes caret { 50% { border-color: transparent; } }
 
 /* ---------- Page header (inner pages) ---------- */
 .page-head {
@@ -400,6 +394,35 @@ h2 em, .page-head h1 em { font-style: italic; font-weight: 400; color: var(--glo
 .chapter p { margin: 0; color: #d0dade; font-size: .95rem; max-width: 40ch; }
 .chapter .k { font-family: var(--mono); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: #f3b58f; margin-bottom: 8px; }
 @media (max-width: 720px) { .life-teaser { grid-template-columns: 1fr; } .chapter { min-height: 260px; } }
+.life-teaser-sm .chapter { min-height: 240px; }
+.life-teaser-sm .chapter h3 { font-size: 1.5rem; }
+#outside { padding-top: clamp(40px, 6vw, 72px); padding-bottom: clamp(24px, 4vw, 48px); }
+
+/* ---------- Darkroom print (ASCII over photo) ---------- */
+.darkroom { margin: 0; }
+.dr-print {
+  background: #f3eee4; padding: clamp(8px, 1.6vw, 18px); border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(20, 33, 43, .08), 0 24px 50px -28px rgba(20, 33, 43, .45);
+}
+.dr-stage { position: relative; aspect-ratio: 2316 / 1535; overflow: hidden; background: #f3eee4; touch-action: pan-y; cursor: crosshair; contain: layout paint; }
+.dr-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 3; transition: opacity .9s ease; }
+.dr-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
+.dr-lens {
+  position: absolute; left: 0; top: 0; z-index: 2; overflow: hidden; pointer-events: none;
+  opacity: 0; transition: opacity .35s ease; will-change: transform;
+  -webkit-mask-image: radial-gradient(circle closest-side, #000 55%, transparent 100%);
+  mask-image: radial-gradient(circle closest-side, #000 55%, transparent 100%);
+}
+.dr-lens.on { opacity: 1; }
+.dr-lens img { position: absolute; left: 0; top: 0; max-width: none; will-change: transform; }
+.darkroom.has-ascii .dr-photo { opacity: 0; }
+.darkroom.has-ascii.developed .dr-photo { opacity: 1; }
+.darkroom figcaption { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; margin-top: 22px; flex-wrap: wrap; }
+.dr-title { font-family: var(--serif); font-size: 1.25rem; margin: 0 0 2px; }
+.dr-sub { font-size: .92rem; color: var(--ink-soft); margin: 0; max-width: 60ch; }
+.dr-toggle { flex: none; }
+.dr-toggle[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+@media (hover: none) { .dr-stage { cursor: default; } }
 
 /* ---------- Life gallery ---------- */
 .gallery { columns: 3 260px; column-gap: 18px; }
@@ -430,7 +453,7 @@ h2 em, .page-head h1 em { font-style: italic; font-weight: 400; color: var(--glo
 
 .tldr-box {
   font-family: var(--serif); font-size: clamp(1.25rem, 2.4vw, 1.6rem); line-height: 1.4;
-  border-left: 3px solid var(--glow); padding: 4px 0 4px 22px; margin: 0 0 40px; font-variation-settings: "SOFT" 100;
+  border-left: 3px solid var(--glow); padding: 4px 0 4px 22px; margin: 0 0 40px;
 }
 .prose h2 { font-size: clamp(1.5rem, 3vw, 1.9rem); margin-top: 1.8em; }
 .prose h2:first-child { margin-top: 0; }

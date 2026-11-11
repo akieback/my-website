@@ -96,22 +96,30 @@
   /* ---------- footer ocean (animated when visible) ---------- */
   function startOcean(canvas) {
     let ctx, w, h, raf = 0, visible = false, t0 = performance.now();
+    let paper = cssVar("--paper");
     const resize = () => ({ ctx, w, h } = fitCanvas(canvas));
     resize();
-    const shoreY = () => Math.min(90, h * 0.16);
-    const swell = (x, t) => shoreY() + Math.sin(x * 0.009 + t * 0.35) * 12 + Math.sin(x * 0.021 - t * 0.6) * 5;
+    const SHORE = 88;
+    const swell = (x, t) => SHORE + Math.sin(x * 0.009 + t * 0.35) * 12 + Math.sin(x * 0.021 - t * 0.6) * 5;
     const layers = [
       { dy: 26, a: 9, k: 0.016, s: -0.5, c: "rgba(143,193,196,0.16)" },
       { dy: 52, a: 7, k: 0.023, s: 0.7, c: "rgba(29,90,110,0.40)" },
       { dy: 84, a: 6, k: 0.031, s: -0.9, c: "rgba(16,48,64,0.55)" }
     ];
+    // only the band where the water moves is repainted; the deep water below is drawn once
+    const BAND = 220;
+    let full = true;
     function frame(now) {
+      raf = 0;
       const t = (now - t0) / 1000;
-      ctx.clearRect(0, 0, w, h);
+      ctx.save();
+      if (!full) { ctx.beginPath(); ctx.rect(0, 0, w, BAND); ctx.clip(); }
+      full = false;
+      ctx.fillStyle = "#0c1922"; ctx.fillRect(0, 0, w, h);
       layers.forEach((l, i) => {
         ctx.beginPath(); ctx.moveTo(0, h);
         for (let x = 0; x <= w + 6; x += 6) {
-          ctx.lineTo(x, shoreY() + l.dy + Math.sin(x * l.k + t * l.s + i) * l.a + Math.sin(x * l.k * 1.7 - t * l.s * 0.8) * l.a * 0.5);
+          ctx.lineTo(x, SHORE + l.dy + Math.sin(x * l.k + t * l.s + i) * l.a + Math.sin(x * l.k * 1.7 - t * l.s * 0.8) * l.a * 0.5);
         }
         ctx.lineTo(w, h); ctx.closePath();
         ctx.fillStyle = l.c; ctx.fill();
@@ -120,19 +128,24 @@
       ctx.beginPath(); ctx.moveTo(0, 0);
       for (let x = 0; x <= w + 6; x += 6) ctx.lineTo(x, swell(x, t));
       ctx.lineTo(w, 0); ctx.closePath();
-      ctx.fillStyle = cssVar("--paper"); ctx.fill();
+      ctx.fillStyle = paper; ctx.fill();
       ctx.beginPath();
       for (let x = 0; x <= w + 6; x += 6) x === 0 ? ctx.moveTo(x, swell(x, t) + 3) : ctx.lineTo(x, swell(x, t) + 3);
       ctx.strokeStyle = "rgba(241,235,224,0.45)"; ctx.lineWidth = 1.5; ctx.stroke();
-      if (visible && !REDUCED) raf = requestAnimationFrame(frame);
+      ctx.restore();
+      if (visible && !REDUCED && !document.hidden) raf = requestAnimationFrame(frame);
     }
     new IntersectionObserver(([e]) => {
       visible = e.isIntersecting;
-      cancelAnimationFrame(raf);
+      if (raf) { cancelAnimationFrame(raf); raf = 0; }
       if (visible) raf = requestAnimationFrame(frame);
     }).observe(canvas);
-    window.addEventListener("resize", () => { resize(); frame(performance.now()); });
+    let lastW = window.innerWidth;
+    window.addEventListener("resize", () => { if (window.innerWidth === lastW) return; lastW = window.innerWidth; resize(); full = true; frame(performance.now()); });
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { paper = cssVar("--paper"); full = true; frame(performance.now()); });
+    document.addEventListener("visibilitychange", () => { if (!document.hidden && visible && !raf) raf = requestAnimationFrame(frame); });
     frame(performance.now());
+
   }
 
   /* ---------- brand mark ---------- */
@@ -149,8 +162,7 @@
   const NAV = [
     { id: "home", label: "Home", href: "index.html" },
     { id: "research", label: "Research", href: "research.html" },
-    { id: "about", label: "About", href: "about.html" },
-    { id: "life", label: "Life", href: "life.html" }
+    { id: "about", label: "About", href: "about.html" }
   ];
 
   function buildChrome() {
@@ -179,15 +191,15 @@
     foot.innerHTML = `
       <canvas aria-hidden="true"></canvas>
       <div class="wrap">
-        <h2>Paddle out &amp; <em>say hi.</em></h2>
-        <p class="lede">Always happy to talk speech, self-supervised learning, or the swell forecast.</p>
+        <h2>Get in <em>touch.</em></h2>
+        <p class="lede">Open to research collaborations and conversations about speech, self-supervised learning and machine learning for health.</p>
         <div class="foot-links">
           <a class="btn btn-glow" href="mailto:Adrian.Kieback@gmail.com">${ICONS.mail} Adrian.Kieback@gmail.com</a>
           <a class="btn btn-ghost-light" href="https://github.com/akieback" target="_blank" rel="noopener">${ICONS.github} GitHub</a>
           <a class="btn btn-ghost-light" href="https://www.linkedin.com/in/adrian-kieback" target="_blank" rel="noopener">${ICONS.linkedin} LinkedIn</a>
         </div>
         <div class="foot-bottom">
-          <span>© ${new Date().getFullYear()} Adrian Kieback · 0 m, sea level</span>
+          <span>© ${new Date().getFullYear()} Adrian Kieback</span>
           <a href="notebook.html" title="Private notebook">${ICONS.lock} notebook</a>
         </div>
       </div>`;
@@ -227,26 +239,30 @@
       }
       if (goingDown || goingUp) lastY = y;
     };
-    window.addEventListener("scroll", update, { passive: true });
     update();
+    return update;
   }
 
   function wireAltimeter(alt) {
     const marker = alt.querySelector(".marker");
     const label = marker.querySelector("b");
+    let lastLabel = "";
     const update = () => {
       const max = document.documentElement.scrollHeight - window.innerHeight;
       const p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
-      marker.style.top = `${p * 100}%`;
+      marker.style.transform = `translateY(${(p * alt.clientHeight).toFixed(1)}px) translateY(-50%)`;
       const m = Math.round((SUMMIT_M * (1 - p)) / 10) * 10;
-      label.textContent = m === 0 ? "0 m · paddle out" : `${m.toLocaleString("en-US").replace(",", " ")} m`;
-      const under = document.elementsFromPoint(window.innerWidth - 40, window.innerHeight / 2);
-      const onDark = under.some((el) => el.matches && el.matches(".hero, .page-head, .site-footer"));
-      alt.classList.toggle("on-dark", onDark);
+      const text = m === 0 ? "0 m" : `${m.toLocaleString("en-US").replace(",", " ")} m`;
+      if (text !== lastLabel) { label.textContent = text; lastLabel = text; }
+      const mid = window.innerHeight / 2;
+      const onDark = darks.some((el) => { const b = el.getBoundingClientRect(); return b.top < mid && b.bottom > mid; });
+      if (onDark !== wasDark) { alt.classList.toggle("on-dark", onDark); wasDark = onDark; }
     };
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
+    const darks = [...document.querySelectorAll(".hero, .page-head, .site-footer")];
+    let wasDark = null;
+    if (getComputedStyle(alt).display === "none") return () => {};
     update();
+    return update;
   }
 
   function wireReveal() {
@@ -257,11 +273,9 @@
         if (el.getBoundingClientRect().top < limit) { el.classList.add("in"); return false; }
         return true;
       });
-      if (!pending.length) { window.removeEventListener("scroll", check); window.removeEventListener("resize", check); }
     };
-    window.addEventListener("scroll", check, { passive: true });
-    window.addEventListener("resize", check);
     check();
+    return () => { if (pending.length) check(); };
   }
 
   /* ---------- shared renderers ---------- */
@@ -328,8 +342,7 @@
   /* ---------- boot ---------- */
   function boot() {
     const { nav, foot, alt } = buildChrome();
-    wireNav(nav);
-    wireAltimeter(alt);
+    const onScroll = [wireNav(nav), wireAltimeter(alt)];
     startOcean(foot.querySelector("canvas"));
 
     const head = document.querySelector(".page-head canvas");
@@ -339,7 +352,12 @@
       window.addEventListener("resize", () => { clearTimeout(t); t = setTimeout(() => drawPageHead(head), 120); });
       window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => drawPageHead(head));
     }
-    wireReveal();
+    onScroll.push(wireReveal());
+    let ticking = false;
+    const tick = () => { ticking = false; onScroll.forEach((f) => f()); };
+    const schedule = () => { if (!ticking) { ticking = true; requestAnimationFrame(tick); } };
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
   }
 
   // All scripts are deferred: page scripts render their content first, then this runs.

@@ -51,7 +51,6 @@ window.PAPERS = [
         <li><strong>Cluster once, not iteratively.</strong> Unlike HuBERT or WavLM, there is no re-clustering loop. The anchor is computed on input features a single time.</li>
         <li><strong>Soft, not hard.</strong> Soft assignments keep the uncertainty between acoustically similar sounds instead of forcing a single label.</li>
       </ul>
-      <blockquote>It works a lot like a first bolt on a climb. It holds you while you're finding your feet, and once you're moving well you hardly use it.</blockquote>
 
       <h2>What we found</h2>
       <p>Trained on roughly <strong>50,000 hours of speech</strong> and compared against a WavLM-style baseline with matched compute, GMM anchoring improved speech recognition, emotion recognition, and slot filling. The learned representations also use their cluster space far more evenly: up to 98% entropy versus 31% for the baseline.</p>

@@ -5,17 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Life · Adrian Kieback</title>
   <meta name="description" content="Off the clock: surfing, climbing, and life between the ocean and the mountains.">
+  <meta name="robots" content="noindex">
   <meta name="theme-color" content="#0c1922">
   <link rel="icon" href="icons/mark.svg" type="image/svg+xml">
   <link rel="alternate icon" href="icons/favicon.ico">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
   <link rel="stylesheet" href="assets/css/site.css">
   <script>document.documentElement.classList.add("js")</script>
   <script defer src="assets/js/site.js"></script>
   <script defer src="data/life.js"></script>
   <script defer src="assets/js/life.js"></script>
+  <script defer src="assets/js/darkroom.js"></script>
 </head>
 <body data-page="life">
 <main id="main">
@@ -30,6 +32,20 @@
 
   <section class="section">
     <div class="wrap">
+      <figure class="darkroom reveal" data-ascii="data/yosemite.txt" data-cols="400" style="margin-bottom:clamp(56px,8vw,96px)">
+        <div class="dr-print">
+          <div class="dr-stage">
+            <img class="dr-photo" src="images/yosemite.jpg" alt="Black-and-white photo of Yosemite Valley from Tunnel View: El Capitan on the left, Half Dome in the distance, Bridalveil Fall on the right" width="1800" height="1193" loading="lazy">
+          </div>
+        </div>
+        <figcaption>
+          <div>
+            <p class="dr-title">Tunnel View, Yosemite</p>
+            <p class="dr-sub">El Capitan, Half Dome and Bridalveil Fall, in a photo I took and the same frame as 400 columns of ASCII. Hover or drag across the print to develop it.</p>
+          </div>
+          <button class="btn dr-toggle" type="button" aria-pressed="false">develop the print</button>
+        </figcaption>
+      </figure>
       <div class="life-teaser">
         <article class="chapter reveal" id="ocean" data-scene="ocean" style="min-height:420px">
           <span class="k">Salt water</span>
